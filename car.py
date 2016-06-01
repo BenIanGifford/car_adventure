@@ -1,19 +1,18 @@
 import random
 
-events = [
+EVENTS = [
     "gas_station",
     "nothing",
     "nothing",
     "nothing",
     "nothing",
     "nothing"]
-random.shuffle(events)
-at_gas_station = False
+random.shuffle(EVENTS)
 
 class Car():
     """Your car."""
 
-    def __init__(self, make, model, year, fuel_capacity, color=None):
+    def __init__(self, make, model, year, fuel_capacity, color=None, at_ga_station = False):
         """Atributtes of your car, fuel in gallons."""
         self.color = color
         self.make = make
@@ -21,6 +20,7 @@ class Car():
         self.year = year
         self.fuel_capacity = fuel_capacity
         self.fuel_level = self.fuel_capacity
+        self.at_gas_station = at_gas_station
         if self.year < 2000:
             print("Your car is old")
             
@@ -29,28 +29,29 @@ class Car():
                 
         if self.fuel_level >= self.fuel_capacity:
             print("Your tank is already full :P")
-        elif self.fuel_level < self.fuel_capacity and at_gas_station == False:
+        elif self.fuel_level < self.fuel_capacity and self.at_gas_station == False:
             print("You are not at a gas station and therfore can't fill up") 
-        elif self.fuel_level < self.fuel_capacity and at_gas_station == True:
+        elif self.fuel_level < self.fuel_capacity and self.at_gas_station == True:
             self.fuel_level = self.fuel_capacity
-            print("Your fuel tank is full") 
+            print("Your fuel tank has been filled") 
 
     def drive(self):
         """Drive your car"""
         self.fuel_level = self.fuel_level -1
         
-        if random.choice(events) == "gas_station":
-            at_gas_station = True
-            print("You are at a gas station")
-        elif random.choice(events) != "gas_station":
-            at_gas_station = False
+        if self.fuel_level > 1:
+            print("Your car is moving")
             
-        if self.fuel_level < 1:
-            print("You need more gas")
-        elif self.fuel_level <= self.fuel_capacity /2:
+        if self.fuel_level <= self.fuel_capacity /2 and self.fuel_level !< 0:
             print(self.fuel_level -1)
-        else:
-            print("The car is moving")
+        
+        if self.fuel_level <= 1:
+            print("You need more gas")
+        elif random.choice(EVENTS) == "gas_station":
+            self.at_gas_station = True
+            print("You are at a gas station")
+        elif random.choice(EVENTS) != "gas_station":
+            self.at_gas_station = False
 
     def specs(self):
         """Display specs of your car"""
