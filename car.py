@@ -30,11 +30,16 @@ class Car():
         self.at_gas_station = False
         self.at_bank = False
         self.looted = False
+        self.times_driven = 0
+        self.banks_looted = 0
+        self.times_refueled = 0
         if self.year < 2000:
             print("Your car is old")
             
     def refuel(self):
         """Fill up your gas."""
+        self.times_refueled = self.times_refueled + 1
+
                 
         if self.fuel_level >= self.fuel_capacity:
             print("Your tank is already full :P")
@@ -49,6 +54,7 @@ class Car():
     def drive(self):
         """Drive your car"""
         self.fuel_level = self.fuel_level -1
+        self.times_driven = self.times_driven + 1
         
         if self.fuel_level > 1:
             print("Your car is moving")
@@ -69,6 +75,11 @@ class Car():
             self.at_gas_station = False
         elif random.choice(EVENTS) != "bank":
             self.at_bank = False
+            
+        if self.fuel_level <= 0 and self.at_gas_station == False:
+            print("Game over, you collected", self.money, "Carmids drove",
+            self.times_driven, "times refueled", self.times_refueled,
+            "times and looted", self.banks_looted, "banks")
 
     def specs(self):
         """Display specs of your car"""
@@ -76,6 +87,9 @@ class Car():
         self.fuel_capacity, "Gallons", self.money, "Carmids")
         
 def loot(self):
+    """Loot any bank you are at"""        
+    self.banks_looted = self.banks_looted + 1
+
         if self.at_bank == True:
             if self.looted == True:
                 print("No more money here")
