@@ -1,3 +1,5 @@
+### v0.0.9
+Added car tye-chooser and text parser
 ### v0.0.8
 Added game over bit.
 ### v0.0.7
