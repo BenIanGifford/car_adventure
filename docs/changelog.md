@@ -1,3 +1,5 @@
+### v0.0.10
+Changed the way the text parser works to make it shorter
 ### v0.0.9
 Added car tye-chooser and text parser
 ### v0.0.8
