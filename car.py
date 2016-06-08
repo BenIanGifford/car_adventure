@@ -14,7 +14,8 @@ BOOL = [
     True,
     False]
 random.shuffle(EVENTS)
-USER_COMMAND = input("Ignore")
+USER_COMMAND = input("""Welcome to Car Adventure the hit text based adventure 
+by Benjamin Ian Gifford!!!""")
 
 class Car():
     """Your car."""
@@ -43,15 +44,15 @@ class Car():
         USER_COMMAND = input("What do you want to do? ")
 
         if USER_COMMAND == "refuel":
-            car.refuel()
+            self.refuel()
         elif USER_COMMAND == "drive":
-            car.drive()
+            self.drive()
         elif USER_COMMAND == "specs":
-            car.specs()
+            self.specs()
         elif USER_COMMAND == "loot":
-            car.loot()
+            self.loot()
         elif USER_COMMAND == "heal":
-            car.heal()
+            self.heal()
 
     def heal(self):
         self.health = self.health
