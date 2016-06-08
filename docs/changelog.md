@@ -1,3 +1,5 @@
+### v0.0.12
+Added fight event nd some basic combat
 ### v0.0.11
 Added hospital event.
 ### v0.0.10
