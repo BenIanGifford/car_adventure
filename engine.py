@@ -1,3 +1,4 @@
+from time import sleep
 from car import *
 from monster import *
 
@@ -12,4 +13,6 @@ elif car_type == "versa":
     car.drive()
 else:
     print("what?")
-    
+
+if car.at_a_fight == True:
+    monster = Monster("Bob")
