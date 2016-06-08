@@ -15,4 +15,4 @@ else:
     print("what?")
 
 if car.at_a_fight == True:
-    monster = Monster("Bob")
+    monster = Monster("bob")
