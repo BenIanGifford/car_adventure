@@ -1,7 +1,9 @@
+### v0.0.11
+Added hospital event.
 ### v0.0.10
-Changed the way the text parser works to make it shorter
+Changed the way the text parser works to make it shorter.
 ### v0.0.9
-Added car tye-chooser and text parser
+Added car type-chooser and text parser.
 ### v0.0.8
 Added game over bit.
 ### v0.0.7
