@@ -2,20 +2,21 @@
 Car Adventure"""
 
 import random
+from monster import Monster
 
 EVENTS = [
     "gas_station",
     "bank",
     "hospital",
-    "nothing",
+    "fight",
     "nothing",
     "nothing"]
 BOOL = [
     True,
     False]
 random.shuffle(EVENTS)
-USER_COMMAND = input("""Welcome to Car Adventure the hit text based adventure 
-by Benjamin Ian Gifford!!!""")
+USER_COMMAND = input("""Welcome to Car Adventure the hit text based adventure
+by Benjamin Ian Gifford. Type exit or quit to quit""")
 
 class Car():
     """Your car."""
@@ -33,8 +34,10 @@ class Car():
         self.at_gas_station = False
         self.at_bank = False
         self.at_hospital = False
+        self.at_a_fight = False
         self.looted = False
         self.times_driven = 0
+        self.times_fought = 0
         self.banks_looted = 0
         self.times_refueled = 0
         if self.year < 2000:
@@ -43,16 +46,35 @@ class Car():
     def get_user_input(self):
         USER_COMMAND = input("What do you want to do? ")
 
-        if USER_COMMAND == "refuel":
+        if USER_COMMAND.lower() == "refuel":
             self.refuel()
-        elif USER_COMMAND == "drive":
+        elif USER_COMMAND.lower() == "drive":
             self.drive()
-        elif USER_COMMAND == "specs":
+        elif USER_COMMAND.lower() == "specs":
             self.specs()
-        elif USER_COMMAND == "loot":
+        elif USER_COMMAND.lower() == "loot":
             self.loot()
-        elif USER_COMMAND == "heal":
+        elif USER_COMMAND.lower() == "heal":
             self.heal()
+        elif USER_COMMAND.lower() == "exit" or "quit":
+            exit
+            quit
+        else:
+            USER_COMMAND = input("What do you want to do? ")
+
+            if USER_COMMAND.lower() == "refuel":
+                self.refuel()
+            elif USER_COMMAND.lower() == "drive":
+                self.drive()
+            elif USER_COMMAND.lower() == "specs":
+                self.specs()
+            elif USER_COMMAND.lower() == "loot":
+                self.loot()
+            elif USER_COMMAND.lower() == "heal":
+                self.heal()
+            elif USER_COMMAND.lower() == "exit" or "quit":
+                exit
+                quit
 
     def heal(self):
         self.health = self.health
@@ -99,7 +121,10 @@ class Car():
             print("You are at a bank")
         elif random.choice(EVENTS) == "hospital":
             self.at_hospital = True
-            print("You are at a hoapital")
+            print("You are at a hospital")
+        elif random.choice(EVENTS) == "fight":
+            self.at_a_fight = True
+            print("You have found a monster!")
         elif random.choice(EVENTS) != "gas_station":
             self.at_gas_station = False
         elif random.choice(EVENTS) != "bank":
