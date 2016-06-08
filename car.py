@@ -9,8 +9,8 @@ EVENTS = [
     "bank",
     "hospital",
     "fight",
-    "nothing",
-    "nothing"]
+    "fight",
+    "fight"]
 BOOL = [
     True,
     False]
@@ -56,6 +56,8 @@ class Car():
             self.loot()
         elif USER_COMMAND.lower() == "heal":
             self.heal()
+        elif USER_COMMAND.lower() == "fight":
+            Monster.defend(self)
         elif USER_COMMAND.lower() == "exit" or "quit":
             exit
             quit
@@ -72,6 +74,8 @@ class Car():
                 self.loot()
             elif USER_COMMAND.lower() == "heal":
                 self.heal()
+            elif USER_COMMAND.lower() == "fight":
+                Monster.defend(self)
             elif USER_COMMAND.lower() == "exit" or "quit":
                 exit
                 quit
