@@ -1,4 +1,5 @@
 import random
+
 class Monster():
   """The monster class"""
   def __init__(self):
