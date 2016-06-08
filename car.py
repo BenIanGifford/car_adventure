@@ -6,7 +6,7 @@ import random
 EVENTS = [
     "gas_station",
     "bank",
-    "nothing",
+    "hospital",
     "nothing",
     "nothing",
     "nothing"]
@@ -26,10 +26,12 @@ class Car():
         self.model = model
         self.year = year
         self.money = 100
+        self.health = 50
         self.fuel_capacity = fuel_capacity
         self.fuel_level = self.fuel_capacity
         self.at_gas_station = False
         self.at_bank = False
+        self.at_hospital = False
         self.looted = False
         self.times_driven = 0
         self.banks_looted = 0
@@ -48,6 +50,13 @@ class Car():
             car.specs()
         elif USER_COMMAND == "loot":
             car.loot()
+        elif USER_COMMAND == "heal":
+            car.heal()
+
+    def heal(self):
+        self.health = self.health
+        print("You've been healed! Your health is now:", self.health)
+        self.get_user_input()
 
 
     def refuel(self):
@@ -69,7 +78,7 @@ class Car():
 
     def drive(self):
         """Drive your car"""
-        
+
         if self.fuel_level > 0:
             print("Your car is moving")
             self.times_driven = self.times_driven + 1
@@ -87,6 +96,9 @@ class Car():
             self.at_bank = True
             self.looted = False
             print("You are at a bank")
+        elif random.choice(EVENTS) == "hospital":
+            self.at_hospital = True
+            print("You are at a hoapital")
         elif random.choice(EVENTS) != "gas_station":
             self.at_gas_station = False
         elif random.choice(EVENTS) != "bank":
@@ -96,7 +108,7 @@ class Car():
             print("Game over, you collected", self.money, "Carmids drove",
             self.times_driven, "times refueled", self.times_refueled,
             "and looted", self.banks_looted, "banks")
-            
+
         self.get_user_input()
 
 
