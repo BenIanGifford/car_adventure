@@ -13,8 +13,12 @@ elif car_type == "versa":
 else:
     print("what?")
 
-while car.at_fight == True:
+while 1 > 2:
     car.fight_car()
     print("You've been hit, your health is:", car.health)
-    sleep(random.randint(1, 5))
     car.get_user_input()
+    sleep(random.randint(1, 5))
+    
+if car.health <= 0:
+    print("Your health is less than zero you are dead")
+    exit()
