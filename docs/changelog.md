@@ -1,3 +1,5 @@
+### v1.0.0
+Added functioing combat for first full realease.	
 ### v0.0.12
 Added fight event nd some basic combat
 ### v0.0.11
