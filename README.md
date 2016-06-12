@@ -5,4 +5,4 @@ check out our [github pages](http://beniangifford.github.io/car_adventure/) and 
 
 Current dependencies are the [random](https://docs.python.org/3.4/library/random.html) and [time](https://docs.python.org/3.4/library/time.html) python modules.
 
-This project attempts to follow the semantic [versioning system](http://semver.org/). 
+From v1.0.0 onwards this project attempts to follow the semantic [versioning system](http://semver.org/). 
