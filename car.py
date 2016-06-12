@@ -1,5 +1,4 @@
-"""Car module for the hit text based adventure
-Car Adventure"""
+"""Car module for the hit text based adventure Car Adventure"""
 
 import random
 from monster import Monster
@@ -18,6 +17,8 @@ random.shuffle(EVENTS)
 USER_COMMAND = input("""Welcome to Car Adventure the hit text based adventure
 by Benjamin Ian Gifford. Type exit or quit to quit""")
 
+evilthing = Monster("Bill")
+
 class Car():
     """Your car."""
 
@@ -29,12 +30,13 @@ class Car():
         self.year = year
         self.money = 100
         self.health = 50
+        self.damage = random.randint(1,10)
         self.fuel_capacity = fuel_capacity
         self.fuel_level = self.fuel_capacity
         self.at_gas_station = False
         self.at_bank = False
         self.at_hospital = False
-        self.at_a_fight = False
+        self.at_fight = False
         self.looted = False
         self.times_driven = 0
         self.times_fought = 0
@@ -42,6 +44,7 @@ class Car():
         self.times_refueled = 0
         if self.year < 2000:
             print("Your car is old")
+
 
     def get_user_input(self):
         USER_COMMAND = input("What do you want to do? ")
@@ -57,7 +60,7 @@ class Car():
         elif USER_COMMAND.lower() == "heal":
             self.heal()
         elif USER_COMMAND.lower() == "fight":
-            Monster.defend(self)
+            self.fight_monster()
         elif USER_COMMAND.lower() == "exit" or "quit":
             exit
             quit
@@ -75,7 +78,7 @@ class Car():
             elif USER_COMMAND.lower() == "heal":
                 self.heal()
             elif USER_COMMAND.lower() == "fight":
-                Monster.defend(self)
+                self.fight_monster
             elif USER_COMMAND.lower() == "exit" or "quit":
                 exit
                 quit
@@ -127,12 +130,15 @@ class Car():
             self.at_hospital = True
             print("You are at a hospital")
         elif random.choice(EVENTS) == "fight":
-            self.at_a_fight = True
+            self.at_fight = True
+            evilthing.alive = True
             print("You have found a monster!")
         elif random.choice(EVENTS) != "gas_station":
             self.at_gas_station = False
         elif random.choice(EVENTS) != "bank":
             self.at_bank = False
+
+   
 
         if self.fuel_level <= 0 and self.at_gas_station == False:
             print("Game over, you collected", self.money, "Carmids drove",
@@ -167,3 +173,21 @@ class Car():
         self.looted = True
 
         self.get_user_input()
+
+
+    def fight_monster(self):
+        if self.at_fight == True and evilthing.alive == True:
+            evilthing.health = evilthing.health - self.damage
+            print("Monster health is: ", evilthing.health)
+
+            if evilthing.health <= 0:
+                evilthing.alive = False
+                print("The monster is dead!")
+                self.get_user_input()
+        elif self.at_fight != True or evilthing.alive != True:
+            print("No more monsters here")
+        self.get_user_input()
+
+        def fight_car(self):
+            if self.at_fight == True and evilthing.alive == True:
+                self.health = self.health - evilthing.damage

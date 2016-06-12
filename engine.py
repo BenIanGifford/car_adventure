@@ -1,6 +1,5 @@
 from time import sleep
 from car import *
-from monster import *
 
 car_type = input("What car do you want? Available cars are: pilot and versa note ")
 if car_type == "pilot":
@@ -14,5 +13,8 @@ elif car_type == "versa":
 else:
     print("what?")
 
-if car.at_a_fight == True:
-    monster = Monster("bob")
+while car.at_fight == True:
+    car.fight_car()
+    print("You've been hit, your health is:", car.health)
+    sleep(random.randint(1, 5))
+    car.get_user_input()
