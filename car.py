@@ -36,6 +36,7 @@ class Car():
         self.fuel_level = self.fuel_capacity
         self.at_gas_station = False
         self.at_bank = False
+        self.alive = True
         self.at_hospital = False
         self.at_fight = False
         self.looted = False
@@ -62,6 +63,8 @@ class Car():
             self.heal()
         elif USER_COMMAND.lower() == "fight":
             self.fight_monster()
+        elif USER_COMMAND.lower() == "fight_car":
+            self.fight_car()
         elif USER_COMMAND.lower() == "exit" or "quit":
             exit()
             quit()
@@ -202,6 +205,14 @@ class Car():
             print("No more monsters here")
         self.get_user_input()
 
-        def fight_car(self):
-            if self.at_fight == True and evilthing.alive == True:
-                self.health = self.health - evilthing.damage
+    def fight_car(self):
+        if self.at_fight == True and evilthing.alive == True:
+            self.health = self.health - evilthing.damage
+            print("You've been hit your health is: ", self.health)
+
+            if self.health <= 0:
+                self.alive = False
+                print("You're dead!!")
+                self.get_user_input()
+            
+        self.get_user_input()
