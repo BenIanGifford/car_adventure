@@ -12,6 +12,3 @@ elif car_type == "versa":
     car.drive()
 else:
     print("what?")
-
-while car.alive == True:
-    car.fight_car()

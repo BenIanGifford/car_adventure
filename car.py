@@ -31,7 +31,7 @@ class Car():
         self.money = 100
         self.max_health = 50
         self.health = 50
-        self.damage = random.randint(1,10)
+        self.damage = 7
         self.fuel_capacity = fuel_capacity
         self.fuel_level = self.fuel_capacity
         self.at_gas_station = False
@@ -62,9 +62,8 @@ class Car():
         elif USER_COMMAND.lower() == "heal":
             self.heal()
         elif USER_COMMAND.lower() == "fight":
-            self.fight_monster()
-        elif USER_COMMAND.lower() == "fight_car":
             self.fight_car()
+            self.fight_monster()
         elif USER_COMMAND.lower() == "exit" or "quit":
             exit()
             quit()
@@ -82,6 +81,7 @@ class Car():
             elif USER_COMMAND.lower() == "heal":
                 self.heal()
             elif USER_COMMAND.lower() == "fight":
+                self.fight_car()
                 self.fight_monster
             elif USER_COMMAND.lower() == "exit" or "quit":
                 exit()
@@ -119,7 +119,7 @@ class Car():
     def drive(self):
         """Drive your car"""
 
-        if self.fuel_level > 0:
+        if self.fuel_level > 0 and self.alive == True:
             print("Your car is moving")
             self.times_driven = self.times_driven + 1
             self.fuel_level = self.fuel_level -1
@@ -145,7 +145,7 @@ class Car():
             print("You are at a hospital")
         elif random.choice(EVENTS) == "fight":
             self.at_fight = True
-            evilthing.alive = True
+            evilthing = Monster("Bill")
             print("You have found a monster!")
         elif random.choice(EVENTS) != "gas_station":
             self.at_gas_station = False
@@ -213,6 +213,3 @@ class Car():
             if self.health <= 0:
                 self.alive = False
                 print("You're dead!!")
-                self.get_user_input()
-            
-        self.get_user_input()
