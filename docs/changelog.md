@@ -1,5 +1,9 @@
+### v1.1.1
+Fixed issue #11	
+### v1.1.0
+The healthy update must now pay for healing and fixed issue [#8](https://github.com/BenIanGifford/car_adventure/issues/8).
 ### v1.0.0
-Added functioing combat for first full realease.	
+Added functioing combat for first full realease.
 ### v0.0.12
 Added fight event nd some basic combat
 ### v0.0.11
